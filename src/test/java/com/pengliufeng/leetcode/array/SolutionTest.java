@@ -11,40 +11,40 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class SolutionTest {
 
     @Test
-    public ListNode buildParam(){
-        int[] paramInt = {1,2,3,4,5,6};
+    public ListNode buildParam() {
+        int[] paramInt = {1, 2, 3, 4, 5, 6};
         ListNode param = new ListNode();
         for (int i : paramInt) {
-            injectValue(param,i);
+            injectValue(param, i);
         }
         return rotateRight(param.next, 2);
     }
 
     private ListNode injectValue(ListNode param, int i) {
-        if (param.next == null){
+        if (param.next == null) {
             param.next = new ListNode(i);
         }
-        return injectValue(param.next,i);
+        return injectValue(param.next, i);
     }
 
     public ListNode rotateRight(ListNode head, int k) {
-        if (head == null || head.next == null){
+        if (head == null || head.next == null) {
             return head;
         }
         int length = deptParam(head);
-        int i = k%length;
-        if (i == 0){
+        int i = k % length;
+        if (i == 0) {
             return head;
         }
 
         ListNode fast = head;
         ListNode slow = head;
 
-        while (i-- > 0){
+        while (i-- > 0) {
             fast = fast.next;
         }
 
-        while (fast.next != null){
+        while (fast.next != null) {
             fast = fast.next;
             slow = slow.next;
         }
@@ -56,27 +56,36 @@ public class SolutionTest {
         return result;
     }
 
-    int deptParam(ListNode listNode){
+    int deptParam(ListNode listNode) {
       /*  if (listNode.next == null){
             return 1;
         }
         return deptParam(listNode.next)+1;*/
-        if (listNode == null){
+        if (listNode == null) {
             return 0;
         }
         int sum = 1;
-        while (listNode.next != null){
+        while (listNode.next != null) {
             sum++;
             listNode = listNode.next;
         }
         return sum;
     }
 
-     public class ListNode {
-      int val;
-      ListNode next;
-      ListNode() {}
-      ListNode(int val) { this.val = val; }
-      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
-  }
+    public class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode() {
+        }
+
+        ListNode(int val) {
+            this.val = val;
+        }
+
+        ListNode(int val, ListNode next) {
+            this.val = val;
+            this.next = next;
+        }
+    }
 }

@@ -8,9 +8,9 @@ import org.springframework.boot.test.context.SpringBootTest;
  * 若旋转 4 次，则可以得到 [4,5,6,7,0,1,2]
  * 若旋转 4 次，则可以得到 [0,1,2,4,5,6,7]
  * 注意，数组 [a[0], a[1], a[2], ..., a[n-1]] 旋转一次 的结果为数组 [a[n-1], a[0], a[1], a[2], ..., a[n-2]] 。
- *
+ * <p>
  * 给你一个元素值 互不相同 的数组 nums ，它原来是一个升序排列的数组，并按上述情形进行了多次旋转。请你找出并返回数组中的 最小元素 。
- *
+ * <p>
  * https://leetcode-cn.com/problems/find-minimum-in-rotated-sorted-array/
  */
 
@@ -19,14 +19,14 @@ public class FindMinTest {
 
     @Test
     public int findMin(int[] nums) {
-        if (null == nums){
+        if (null == nums) {
             return 5001;
         }
-        if (1 == nums.length){
+        if (1 == nums.length) {
             return nums[0];
         }
-        for (int index = 0 ; index < nums.length - 1 ; index++){
-            if (nums[index] > nums[index + 1]){
+        for (int index = 0; index < nums.length - 1; index++) {
+            if (nums[index] > nums[index + 1]) {
                 return nums[index + 1];
             }
         }
