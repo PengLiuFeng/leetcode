@@ -1,5 +1,8 @@
 package com.pengliufeng.leetcode.dynamicprograme;
 
+import org.junit.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+
 /**
  * @author mr_peng
  * @since 2021/08/19
@@ -19,9 +22,48 @@ package com.pengliufeng.leetcode.dynamicprograme;
  * 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  * </p>
  */
+@SpringBootTest
 public class CheckRecode {
 
+    @Test
+    public void test(){
+        System.out.println(this.checkRecord(10101));
+    }
+
     public int checkRecord(int n) {
-            return  0;
+        //取膜，其实也可以不用，但是为了不溢出，还是取膜
+        final int mod = 1000000007;
+        int[][] dp = new int[2][3];
+        dp[0][0] = 1;
+        for (int i = 1; i <= n; i++) {
+            int[][] dm = new int[2][3];
+            //假设第i天开始有多少种匹配方式
+            //第i天是P
+            for (int j = 0 ; j <= 1 ; j++){
+                for (int k = 0 ; k <= 2 ; k++){
+                    dm[j][0] = (dp[j][k] + dm[j][0]) % mod ;
+                }
+            }
+
+            //第i天是A
+                for (int k = 0 ; k <= 2 ; k++){
+                    dm[1][0] = (dm[1][0] + dp[0][k]) % mod ;
+                }
+            //第i天是L
+            for (int j = 0 ; j <= 1 ; j++){
+                for (int k = 1 ; k <= 2 ; k++){
+                    dm[j][k] = (dm[j][k] + dp[j][k-1]) % mod ;
+                }
+
+            }
+            dp = dm;
+        }
+        int sum = 0 ;
+        for (int j = 0 ; j <= 1 ; j++){
+            for (int k = 0 ; k <= 2 ; k++){
+                sum = (sum + dp[j][k]) % mod;
+            }
+        }
+            return  sum;
     }
 }
