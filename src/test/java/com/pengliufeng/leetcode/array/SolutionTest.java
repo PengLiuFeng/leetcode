@@ -72,7 +72,7 @@ public class SolutionTest {
         return sum;
     }
 
-    public class ListNode {
+    public static class ListNode {
         int val;
         ListNode next;
 
