@@ -39,6 +39,7 @@ public class CheckRecode {
             int[][] dm = new int[2][3];
             //假设第i天开始有多少种匹配方式
             //第i天是P
+
             for (int j = 0 ; j <= 1 ; j++){
                 for (int k = 0 ; k <= 2 ; k++){
                     dm[j][0] = (dp[j][k] + dm[j][0]) % mod ;
