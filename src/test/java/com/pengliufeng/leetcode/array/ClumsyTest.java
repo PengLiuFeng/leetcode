@@ -1,13 +1,14 @@
 package com.pengliufeng.leetcode.array;
 
+import org.apache.commons.httpclient.HttpMethod;
+import org.apache.commons.httpclient.methods.GetMethod;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.scripting.ScriptSource;
-import org.springframework.scripting.groovy.GroovyScriptEvaluator;
-import org.springframework.scripting.groovy.GroovyScriptFactory;
+import org.apache.commons.httpclient.HttpClient;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.io.IOException;
+import java.util.*;
 
 /**
  * 通常，正整数 n 的阶乘是所有小于或等于 n 的正整数的乘积。例如，factorial(10) = 10 * 9 * 8 * 7 * 6 * 5 * 4 * 3 * 2 * 1。
@@ -25,7 +26,24 @@ import java.util.List;
 public class ClumsyTest {
 
     @Test
+    public void test() throws IOException {
+        HttpClient httpClient = new HttpClient();
+        HttpMethod httpMethod = new GetMethod();
+        httpMethod.setPath("www.baidu.com");
+        httpMethod.addRequestHeader("Content-Type","application/json");
+        httpClient.executeMethod(httpMethod);
+        String result = httpMethod.getResponseBodyAsString();
+        System.out.println(result);
+    }
+
+    @Test
     public void clumsyTest() {
+
+        Map<Object, Object> map = new HashMap<>();
+        for (int i = 0; i < 100; i++) {
+            map.put(i + "A", 50);
+        }
+        map.get(10);
         System.out.println(clumsy(5));
     }
 

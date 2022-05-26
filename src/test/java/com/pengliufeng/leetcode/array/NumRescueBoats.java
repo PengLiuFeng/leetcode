@@ -1,7 +1,6 @@
 package com.pengliufeng.leetcode.array;
 
 import org.junit.Test;
-import sun.management.snmp.jvminstr.JvmOSImpl;
 
 import java.util.Arrays;
 
