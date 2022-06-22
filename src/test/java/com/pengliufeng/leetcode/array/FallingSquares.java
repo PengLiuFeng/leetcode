@@ -4,7 +4,13 @@
  */
 package com.pengliufeng.leetcode.array;
 
+import org.junit.Test;
+import org.springframework.beans.BeanUtils;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -32,5 +38,12 @@ public class FallingSquares {
             maxLength[i] = maxHigh;
         }
         return Arrays.asList(maxLength);
+    }
+
+
+    @Test
+    public void testmain() throws ParseException {
+
+
     }
 }
