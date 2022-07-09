@@ -3,7 +3,7 @@ package com.pengliufeng.leetcode.array.listnode;
 
 public class ListNode {
     int val;
-    public ListNode next;
+    ListNode next;
 
     ListNode() {
     }

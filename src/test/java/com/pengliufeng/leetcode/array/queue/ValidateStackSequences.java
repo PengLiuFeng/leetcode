@@ -1,0 +1,33 @@
+package com.pengliufeng.leetcode.array.queue;
+
+import org.junit.Test;
+
+import java.util.Stack;
+
+/**
+ * @author mr-peng
+ * @since 2021-12-24
+ * 输入两个整数序列，第一个序列表示栈的压入顺序，请判断第二个序列是否为该栈的弹出顺序。假设压入栈的所有数字均不相等。例如，序列 {1,2,3,4,5} 是某栈的压栈序列，序列 {4,5,3,2,1} 是该压栈序列对应的一个弹出序列，但 {4,3,5,1,2} 就不可能是该压栈序列的弹出序列。
+ */
+public class ValidateStackSequences {
+
+    @Test
+    public void test(){
+        int[] pushed = {2,1,0};
+        int[] popped = {1,2,0};
+        validateStackSequences(pushed,popped);
+    }
+
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        Stack<Integer> stack = new Stack<>();
+        int index = 0;
+        for (int i = 0; i < pushed.length && index < popped.length; i++) {
+            stack.push(pushed[i]);
+            while (!stack.isEmpty() && stack.peek() == popped[index] && index < popped.length){
+                stack.pop();
+                index++;
+            }
+        }
+        return stack.isEmpty();
+    }
+}

@@ -37,8 +37,8 @@ public class MinDiffInBSTTest {
 
     public class TreeNode {
         int val;
-        TreeNode left;
-        TreeNode right;
+        private TreeNode left;
+        private TreeNode right;
 
         TreeNode() {
         }
